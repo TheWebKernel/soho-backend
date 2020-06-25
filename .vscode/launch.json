@@ -1,0 +1,37 @@
+{
+  "configurations": [
+    {
+      "name": "Debug src/index.ts",
+      "type": "node",
+      "request": "launch",
+      "env": {
+        "TS_NODE_FILES": "true"
+      },
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [
+        "${workspaceFolder}/src/index.ts"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug jest test",
+      "preLaunchTask": "npm run build",
+      "program": "${workspaceRoot}/node_modules/.bin/jest",
+      "args": [
+        "--updateSnapshot",
+        "--config",
+        "${workspaceRoot}/jest.config.js",
+        "--runInBand",
+        "${relativeFile}"
+      ],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceRoot}/dist/**/*"
+      ]
+    }
+  ]
+}
